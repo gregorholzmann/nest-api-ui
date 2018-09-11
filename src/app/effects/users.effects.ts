@@ -14,9 +14,9 @@ export class UsersEffects {
   getData$: Observable<Action> = this.actions$.pipe(
     ofType(UsersActions.GET_USERS),
     mergeMap(action =>
-      this.http.get<User[]>('http://localhost:3000/users').pipe(
-        map(data => {
-          return new UsersActions.ReceiveUsersction(data)
+      this.http.get<{data: {getUsers: User[]}}>('http://localhost:3000/graphql?query={getUsers{name,role}}').pipe(
+        map(res => {
+          return new UsersActions.ReceiveUsersction(res.data.getUsers)
         }),
         catchError(error => of(new UsersActions.GetUsersFailedAction(error)))
       )

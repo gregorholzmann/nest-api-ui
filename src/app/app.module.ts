@@ -18,7 +18,7 @@ import { UsersEffects } from './effects/users.effects'
 
 import { AppComponent } from './app.component'
 import { JobsComponent } from './components/jobs/jobs.component'
-import { UsersComponent } from './components/users/users.component'
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -43,7 +43,7 @@ const routes: Routes = [
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([JobsEffects, UsersEffects])
+    EffectsModule.forRoot([JobsEffects, UsersEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

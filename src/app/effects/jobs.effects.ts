@@ -14,9 +14,9 @@ export class JobsEffects {
   getData$: Observable<Action> = this.actions$.pipe(
     ofType(JobsActions.GET_JOBS),
     mergeMap(action =>
-      this.http.get<Job[]>('http://localhost:3000/jobs').pipe(
-        map(data => {
-          return new JobsActions.ReceiveJobsAction(data)
+      this.http.get<{data: {getJobs: Job[]}}>('http://localhost:3000/graphql?query={getJobs{title,salary}}').pipe(
+        map(res => {
+          return new JobsActions.ReceiveJobsAction(res.data.getJobs)
         }),
         catchError(error => of(new JobsActions.GetJobsFailedAction(error)))
       )
