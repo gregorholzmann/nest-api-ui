@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
 import { RouterModule, Routes } from '@angular/router'
+import { FormsModule } from '@angular/forms'
 
 import { StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
@@ -35,6 +36,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(routes, {useHash: true}),
     StoreModule.forRoot({jobs: JobsReducer, users: UsersReducer}),
     StoreDevtoolsModule.instrument({
@@ -46,4 +48,4 @@ const routes: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
