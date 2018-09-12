@@ -7,7 +7,6 @@ const initialState = []
 export function JobsReducer(state: Job[] = initialState, action: JobsActions.Actions) {
   switch (action.type) {
     case JobsActions.RECEIVE_JOBS:
-      console.log(action.jobsArr)
       return [...action.jobsArr]
 
     default:
