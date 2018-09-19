@@ -18,11 +18,11 @@ export class JobsComponent implements OnInit {
   constructor(private store: Store<Job[]>, private jobService: JobsService) { }
 
   ngOnInit() {
-    this.jobService.getJobs()
     this.jobs$ = this.store.pipe(select(jobSelectors.getJobs))
   }
 
   addJob() {
     console.log('submitted', this.jobTitle, this.jobSalary)
+    this.jobService.addJob({title: this.jobTitle, salary: this.jobSalary})
   }
 }

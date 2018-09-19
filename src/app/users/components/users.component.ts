@@ -19,7 +19,6 @@ export class UsersComponent implements OnInit {
   constructor(private store: Store<User[]>, private userService: UsersService) { }
 
   ngOnInit() {
-    this.userService.getUsers()
     this.users$ = this.store.pipe(select(usersSelectors.getUsers))
   }
 
